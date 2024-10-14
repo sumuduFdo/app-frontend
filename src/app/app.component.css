@@ -1,0 +1,46 @@
+/** Header Styling **/
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #042940;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.nav-logo img {
+  max-height: 2rem; /* Adjust as needed */
+}
+
+.navbar {
+  display: flex;
+  float: left;
+  gap: 30px;
+  font-weight: 500;
+  margin-left: 6rem;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.navbar-link:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-login {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.btn-login:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
