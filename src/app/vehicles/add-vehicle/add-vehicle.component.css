@@ -1,0 +1,29 @@
+.vehicle-form {
+  border: 1px solid blue;
+  width: 60%;
+  padding: 2rem 3rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.btn {
+  background-color: #042940;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 20px;
+  cursor: pointer;
+  margin-right: 0;
+}
+
+.btn:hover {
+  background-color: #ffffff;
+  color: #042940;
+  border: 1px solid #042940;
+}
+
+.form-submit-row {
+  justify-content: end;
+}

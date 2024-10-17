@@ -1,8 +1,14 @@
-<p>vehicle works!</p>
 <div>
-    <button (click)="onSelectVehicle()">
-      <!-- <img src="{{ 'assets/users/' + selectedUser.avatar }}" alt="" /> -->
-      <img class="vehicle-badge" src="assets/badge/car.png"/>
-      <span> Vehicle Name Here (Year)</span>
-    </button>
+  <button (click)="onSelectVehicle()">
+    <!-- <img src="{{ 'assets/users/' + selectedUser.avatar }}" alt="" /> -->
+    <img
+      class="vehicle-badge"
+      [src]="
+        getVehicleType() === 1
+          ? 'assets/badge/car.png'
+          : 'assets/badge/bike.png'
+      "
+    />
+    <span> {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }})</span>
+  </button>
 </div>

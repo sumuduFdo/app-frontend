@@ -1,16 +1,38 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-5 col-lg-5">
-            <ul class="vehicles">
-                <li>
-                    <app-vehicle [vehicle]=""></app-vehicle>
-                      
-                </li>
-              </ul>
-        </div>
-
-        <div class="col-md-7 col-lg-7">
-            <app-vehicle-detail></app-vehicle-detail>
-        </div>
+  @if (addVehicle) {
+    <div class="row add-vehicle-row" (click)="disableAddVehicle()">
+      <div class="col add-vehicle-col" (click)="disableAddVehicle()">
+        <app-add-vehicle (cancel)="disableAddVehicle()"/>
+      </div>
     </div>
+  } @else {
+    <div class="row">
+      <div class="col-md-12 col-lg-12 btn-col">
+        <button class="btn btn-add-vehicle" (click)="enableAddVehicle()">Add Vehicle</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-lg-4" style="padding-right: 3rem;">
+        @if(vehicles().length > 0) {
+          <ul class="vehicles list-group">
+            @for (vehicle of vehicles(); track $index) {
+                <li class="list-group-item list-item">
+                    <app-vehicle [vehicle]="vehicle" (selectVehicle)="onSelectVehicle($event)"></app-vehicle>
+                </li>
+                }
+          </ul>
+        } @else {
+          <p>No vehicles found..</p>
+        }
+      </div>
+  
+      @if(selectedVehicleId && vehicles().length > 0 && selectedVehicle) {
+        <div class="col-md-8 col-lg-8">
+          <app-vehicle-detail [vehicle]="selectedVehicle"></app-vehicle-detail>
+        </div>
+      } @else if(!selectedVehicleId && vehicles().length > 0){
+        <p>Please select a vehicle...</p>
+      }
+    </div>
+  }
 </div>

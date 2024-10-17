@@ -12,13 +12,12 @@ button {
     padding: 0.35rem 0.5rem 0.35rem 2rem;
     background: #fafafa;
     color: rgb(37, 37, 37);
-    border: 1px solid rgb(219, 219, 219);
     font: inherit;
     cursor: pointer;
     width: 100%;
     min-width: 10rem;
     text-align: left;
-    border-radius: 6px;
+    border: none;
 }
 
 button:hover,

@@ -1,4 +1,11 @@
-<form action="/submit-vehicle" method="POST" [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+<form
+  class="vehicle-form"
+  action="/submit-vehicle"
+  method="POST"
+  [formGroup]="vehicleForm"
+  (ngSubmit)="onSubmit()"
+  style="z-index: 11;"
+>
   <!-- Licence Plate -->
   <div class="form-group row">
     <label class="col-sm-3 col-form-label">Licence Plate</label>
@@ -8,9 +15,7 @@
         class="form-control"
         name="licencePlate"
         placeholder="Licence Plate"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="licencePlate"
-        required
       />
     </div>
   </div>
@@ -24,9 +29,7 @@
         class="form-control"
         name="make"
         placeholder="Make"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="make"
-        required
       />
     </div>
   </div>
@@ -40,9 +43,7 @@
         class="form-control"
         name="vModel"
         placeholder="Model"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="model"
-        required
       />
     </div>
   </div>
@@ -56,9 +57,7 @@
         class="form-control"
         name="year"
         placeholder="Year"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="year"
-        required
         min="1900"
         max="2024"
       />
@@ -67,14 +66,11 @@
 
   <!-- Transmission -->
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label"
-      >Transmission</label
-    >
+    <label class="col-sm-3 col-form-label">Transmission</label>
     <div class="col-sm-9">
       <select
         class="form-control"
         name="transmission"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="transmission"
         required
       >
@@ -90,12 +86,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label">Fuel Type</label>
     <div class="col-sm-9">
-      <select
-        class="form-control"
-        name="fuelType"
-        [class]="!editMode ? 'input-inactive' : ''"
-        formControlName="fuelType"
-      >
+      <select class="form-control" name="fuelType" formControlName="fuelType">
         <option value="" disabled selected>Select Fuel Type</option>
         <option value="Petrol">Petrol</option>
         <option value="Diesel">Diesel</option>
@@ -107,9 +98,7 @@
 
   <!-- Engine Capacity -->
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label"
-      >Engine Capacity (L)</label
-    >
+    <label class="col-sm-3 col-form-label">Engine Capacity (L)</label>
     <div class="col-sm-9">
       <input
         type="text"
@@ -125,14 +114,11 @@
 
   <!-- Vehicle Type -->
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label"
-      >Vehicle Type</label
-    >
+    <label class="col-sm-3 col-form-label">Vehicle Type</label>
     <div class="col-sm-9">
       <select
         class="form-control"
         name="vehicleType"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="vehicleType"
         required
       >
@@ -145,14 +131,11 @@
 
   <!-- Availability -->
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label"
-      >Availability</label
-    >
+    <label class="col-sm-3 col-form-label">Availability</label>
     <div class="col-sm-9">
       <select
         class="form-control"
         name="availability"
-        [class]="!editMode ? 'input-inactive' : ''"
         formControlName="availability"
         required
       >
@@ -164,7 +147,7 @@
   </div>
 
   <!-- Body type - only for Cars) -->
-  @if(vehicle.vehicleType === 'Car') {
+  @if(vehicleForm.get('vehicleType')?.value === 'Car') {
   <div class="form-group row">
     <label class="col-sm-3 col-form-label">Body Type</label>
     <div class="col-sm-9">
@@ -186,11 +169,9 @@
   }
 
   <!-- Motorbike Type - Only for motorbikes -->
-  @if(vehicle.vehicleType == 'Motorbike') {
+  @if(vehicleForm.get('vehicleType')?.value ) {
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label"
-      >Motorbike Type</label
-    >
+    <label class="col-sm-3 col-form-label">Motorbike Type</label>
     <div class="col-sm-9">
       <select
         class="form-control"
@@ -210,30 +191,10 @@
 
   <!-- Submit Button -->
 
-  <div class="form-group row">
-    <div class="col" style="text-align: right">
-      @if(!editMode) {
-      <button
-        type="button"
-        class="btn"
-        style="margin-right: 1rem"
-        (click)="editVehicle()"
-      >
-        Edit Vehicle
-      </button>
-      } @else {
-      <button type="submit" class="btn" style="margin-right: 1rem">
-        Submit Changes
-      </button>
-      }
-      
-      <button
-        type="button"
-        class="btn"
-        [disabled]="vehicle.availability === false"
-      >
-        Rent Vehicle
-      </button>
-    </div>
+  <div class="form-group row form-submit-row">
+    <button type="button" class="btn" style="margin-right: 1rem;">Cancel</button>
+    <button type="submit" class="btn" [disabled]="!vehicleForm.valid">
+      Submit
+    </button>
   </div>
 </form>

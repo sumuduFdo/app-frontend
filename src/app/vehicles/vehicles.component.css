@@ -1,3 +1,49 @@
 .container {
-    padding-top: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+li {
+  list-style: none;
+}
+
+.list-item {
+  padding: 0;
+}
+
+.btn-col {
+  text-align: right;
+}
+.btn-add-vehicle {
+  background-color: #042940;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 20px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.btn-add-vehicle:hover {
+  background-color: #ffffff;
+  color: #042940;
+  border: 1px solid #042940;
+}
+
+.add-vehicle-row {
+  padding: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.add-vehicle-col{
+  justify-content: center;
+  background-color: black;
 }
